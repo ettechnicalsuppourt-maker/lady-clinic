@@ -2355,140 +2355,364 @@ button, input, select, textarea {
   color: #A3AABF;
 }
 
+/* ==========================================================================
+   Section Headers & Common Dark Mode
+   ========================================================================== */
+[data-theme="dark"] .section-title {
+  color: #FFFFFF;
+}
+
+[data-theme="dark"] .section-subtitle {
+  color: #D1D5E4;
+}
+
+[data-theme="dark"] .section-tag {
+  background: rgba(224, 82, 141, 0.18);
+  color: #FFA5C8;
+  border: 1px solid rgba(224, 82, 141, 0.35);
+}
+
+/* ==========================================================================
+   About Section Dark Mode
+   ========================================================================== */
+[data-theme="dark"] .about-section {
+  background-color: var(--color-bg-main);
+}
+
 [data-theme="dark"] .about-card-frame img {
-  border-color: var(--color-card-bg);
+  border-color: #1A1D2B;
 }
 
 [data-theme="dark"] .about-quote-box {
-  background: var(--color-card-bg);
+  background: #1A1D2B;
   border-right-color: var(--color-primary);
-  box-shadow: var(--shadow-md);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45);
+}
+
+[data-theme="dark"] .quote-text {
+  color: #E2E5F0;
+}
+
+[data-theme="dark"] .quote-author {
+  color: #FFA5C8;
 }
 
 [data-theme="dark"] .value-item {
-  background: var(--color-card-bg);
-  border-color: var(--color-border);
+  background: #1A1D2B;
+  border: 1px solid var(--color-border);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
 }
 
 [data-theme="dark"] .value-title {
-  color: var(--color-secondary);
+  color: #FFFFFF;
+}
+
+[data-theme="dark"] .value-desc {
+  color: #D1D5E4;
+}
+
+/* ==========================================================================
+   Services Section & Tabs Dark Mode
+   ========================================================================== */
+[data-theme="dark"] .services-section {
+  background-color: var(--color-bg-alt);
+}
+
+[data-theme="dark"] .tab-btn {
+  background: rgba(26, 29, 43, 0.95);
+  color: #E2E5F0;
+  border: 1px solid var(--color-border);
+}
+
+[data-theme="dark"] .tab-btn:hover {
+  border-color: var(--color-primary);
+  color: #FFA5C8;
+}
+
+[data-theme="dark"] .tab-btn.active {
+  background: var(--color-primary);
+  color: #FFFFFF;
+  border-color: var(--color-primary);
+  box-shadow: 0 4px 14px var(--color-primary-glow);
 }
 
 [data-theme="dark"] .service-card {
-  background: var(--color-card-bg);
+  background: #1A1D2B;
   border: 1px solid var(--color-border);
-  box-shadow: var(--shadow-sm);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
 }
 
 [data-theme="dark"] .service-card:hover {
   border-color: var(--color-border-hover);
-  box-shadow: var(--shadow-md);
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.55);
 }
 
 [data-theme="dark"] .service-title {
-  color: var(--color-secondary);
+  color: #FFFFFF;
+}
+
+[data-theme="dark"] .service-summary {
+  color: #D1D5E4;
 }
 
 [data-theme="dark"] .service-features li {
-  color: var(--color-secondary-soft);
+  color: #C5CBDC;
 }
 
 [data-theme="dark"] .service-duration {
-  color: var(--color-secondary-light);
+  color: #A3AABF;
+}
+
+[data-theme="dark"] .btn-service-book {
+  background: rgba(224, 82, 141, 0.2);
+  color: #FFA5C8;
+  border: 1px solid rgba(224, 82, 141, 0.35);
+}
+
+[data-theme="dark"] .btn-service-book:hover {
+  background: var(--color-primary);
+  color: #FFFFFF;
+}
+
+/* Services Bottom CTA Box (Image 2) */
+[data-theme="dark"] .services-bottom-cta {
+  background: #1A1D2B;
+  border: 1px solid var(--color-border);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
+}
+
+[data-theme="dark"] .services-help-text {
+  color: #FFFFFF;
+}
+
+/* ==========================================================================
+   Doctor / Leadership Section Dark Mode (Image 1)
+   ========================================================================== */
+[data-theme="dark"] .doctor-section {
+  background-color: var(--color-bg-main);
 }
 
 [data-theme="dark"] .doctor-card-wrapper {
-  background: var(--color-card-bg);
+  background: #1A1D2B;
   border: 1px solid var(--color-border);
-  box-shadow: var(--shadow-lg);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
+}
+
+[data-theme="dark"] .doctor-name {
+  color: #FFFFFF;
+}
+
+[data-theme="dark"] .doctor-title-subtitle {
+  color: #FFA5C8;
+}
+
+[data-theme="dark"] .doctor-bio-lead {
+  color: #D1D5E4;
+}
+
+[data-theme="dark"] .doctor-bio-lead strong {
+  color: #FFFFFF;
+}
+
+[data-theme="dark"] .doctor-avatar-frame img {
+  border: 4px solid #141724;
+}
+
+[data-theme="dark"] .doctor-badge-float {
+  background: rgba(26, 29, 43, 0.95);
+  color: #FFA5C8;
+  border: 1px solid rgba(224, 82, 141, 0.35);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+}
+
+/* 4 Highlight Chips (Image 1) */
+[data-theme="dark"] .highlight-chip {
+  background: #141724;
+  border: 1px solid var(--color-border);
+  color: #FFFFFF;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
 }
 
 [data-theme="dark"] .doctor-quote-banner {
-  background: rgba(224, 82, 141, 0.08);
-  color: var(--color-secondary);
+  background: rgba(224, 82, 141, 0.12);
+  border-right-color: var(--color-primary);
+  color: #E2E5F0;
+}
+
+/* ==========================================================================
+   Why Choose Us Dark Mode
+   ========================================================================== */
+[data-theme="dark"] .why-us-section {
+  background-color: var(--color-bg-alt);
 }
 
 [data-theme="dark"] .why-card {
-  background: var(--color-card-bg);
+  background: #1A1D2B;
   border: 1px solid var(--color-border);
-  box-shadow: var(--shadow-sm);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
 }
 
 [data-theme="dark"] .why-card-title {
-  color: var(--color-secondary);
+  color: #FFFFFF;
+}
+
+[data-theme="dark"] .why-card-desc {
+  color: #D1D5E4;
+}
+
+/* ==========================================================================
+   Branch Locator Section Dark Mode (Image 3)
+   ========================================================================== */
+[data-theme="dark"] .branches-section {
+  background-color: var(--color-bg-main);
 }
 
 [data-theme="dark"] .branch-tab-btn {
-  background: var(--color-card-bg);
-  border-color: var(--color-border);
-  color: var(--color-secondary-soft);
+  background: rgba(26, 29, 43, 0.95);
+  border: 1px solid var(--color-border);
+  color: #E2E5F0;
 }
 
 [data-theme="dark"] .branch-tab-btn:hover {
   border-color: var(--color-primary);
-  color: var(--color-primary);
+  color: #FFA5C8;
 }
 
 [data-theme="dark"] .branch-tab-btn.active {
   background: var(--color-primary);
   border-color: var(--color-primary);
   color: #FFFFFF;
+  box-shadow: 0 4px 16px var(--color-primary-glow);
 }
 
 [data-theme="dark"] .branch-details-card {
-  background: var(--color-card-bg);
+  background: #1A1D2B;
   border: 1px solid var(--color-border);
-  box-shadow: var(--shadow-md);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
 }
 
 [data-theme="dark"] .branch-title {
-  color: var(--color-secondary);
+  color: #FFFFFF;
+}
+
+[data-theme="dark"] .branch-desc-text {
+  color: #D1D5E4;
+}
+
+[data-theme="dark"] .branch-status-pill {
+  background: rgba(37, 211, 102, 0.18);
+  color: #38E478;
+  border: 1px solid rgba(37, 211, 102, 0.35);
+}
+
+[data-theme="dark"] .meta-title {
+  color: #A3AABF;
 }
 
 [data-theme="dark"] .meta-value {
-  color: var(--color-secondary);
+  color: #FFFFFF;
+}
+
+[data-theme="dark"] .meta-icon {
+  background: rgba(224, 82, 141, 0.2);
+  color: #FFA5C8;
 }
 
 [data-theme="dark"] .branch-map-placeholder {
-  background: #141722;
+  background: #141724;
   border-color: var(--color-border);
 }
 
 [data-theme="dark"] .map-visual-frame {
-  background: var(--color-card-bg);
-  border-color: var(--color-border);
+  background: #1A1D2B;
+  border: 1px solid var(--color-border);
+  color: #FFFFFF;
+}
+
+[data-theme="dark"] .map-branch-tag {
+  color: #FFFFFF;
+}
+
+[data-theme="dark"] .map-note {
+  color: #D1D5E4;
+}
+
+[data-theme="dark"] .btn-map-link {
+  background: rgba(224, 82, 141, 0.18);
+  color: #FFA5C8;
+  border: 1px solid rgba(224, 82, 141, 0.35);
+}
+
+[data-theme="dark"] .btn-map-link:hover {
+  background: var(--color-primary);
+  color: #FFFFFF;
+}
+
+/* ==========================================================================
+   Reviews Section Dark Mode
+   ========================================================================== */
+[data-theme="dark"] .reviews-section {
+  background-color: var(--color-bg-alt);
 }
 
 [data-theme="dark"] .review-card {
-  background: var(--color-card-bg);
+  background: #1A1D2B;
   border: 1px solid var(--color-border);
-  box-shadow: var(--shadow-sm);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
 }
 
 [data-theme="dark"] .review-quote {
-  color: var(--color-secondary-soft);
+  color: #E2E5F0;
 }
 
 [data-theme="dark"] .author-name {
-  color: var(--color-secondary);
+  color: #FFFFFF;
+}
+
+[data-theme="dark"] .author-detail {
+  color: #A3AABF;
 }
 
 [data-theme="dark"] .community-counter-box {
-  background: var(--color-card-bg);
+  background: #1A1D2B;
   border: 1px solid var(--color-border);
+}
+
+[data-theme="dark"] .community-text {
+  color: #E2E5F0;
+}
+
+[data-theme="dark"] .community-text strong {
+  color: #FFFFFF;
+}
+
+/* ==========================================================================
+   Booking Section Dark Mode
+   ========================================================================== */
+[data-theme="dark"] .booking-section {
+  background-color: var(--color-bg-main);
 }
 
 [data-theme="dark"] .booking-card-wrapper {
   background: #141724;
   border: 1px solid var(--color-border);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
 }
 
 [data-theme="dark"] .booking-heading {
-  color: var(--color-secondary);
+  color: #FFFFFF;
+}
+
+[data-theme="dark"] .booking-subtext {
+  color: #D1D5E4;
 }
 
 [data-theme="dark"] .perk-item {
-  color: var(--color-secondary-soft);
+  color: #E2E5F0;
+}
+
+[data-theme="dark"] .direct-box-title {
+  color: #FFFFFF;
 }
 
 [data-theme="dark"] .booking-direct-box {
@@ -2497,21 +2721,21 @@ button, input, select, textarea {
 }
 
 [data-theme="dark"] .booking-form-card {
-  background: var(--color-card-bg);
+  background: #1A1D2B;
   border: 1px solid var(--color-border);
-  box-shadow: var(--shadow-lg);
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.55);
 }
 
 [data-theme="dark"] .form-label {
-  color: var(--color-secondary);
+  color: #FFFFFF;
 }
 
 [data-theme="dark"] .form-input,
 [data-theme="dark"] .form-select,
 [data-theme="dark"] .form-textarea {
-  background: #0F111B;
+  background: #0E1017;
   border-color: var(--color-border);
-  color: var(--color-secondary);
+  color: #FFFFFF;
 }
 
 [data-theme="dark"] .form-input:focus,
@@ -2523,23 +2747,32 @@ button, input, select, textarea {
 
 [data-theme="dark"] .form-select option {
   background: #1A1D2B;
-  color: #F3F4F8;
+  color: #FFFFFF;
+}
+
+/* ==========================================================================
+   FAQ Section Dark Mode
+   ========================================================================== */
+[data-theme="dark"] .faq-section {
+  background-color: var(--color-bg-alt);
 }
 
 [data-theme="dark"] .faq-item {
-  background: var(--color-card-bg);
+  background: #1A1D2B;
   border: 1px solid var(--color-border);
 }
 
 [data-theme="dark"] .faq-question-btn {
-  color: var(--color-secondary);
+  color: #FFFFFF;
 }
 
-[data-theme="dark"] .faq-answer-panel {
-  color: var(--color-secondary-soft);
-  border-top: 1px solid var(--color-border);
+[data-theme="dark"] .faq-answer-panel p {
+  color: #D1D5E4;
 }
 
+/* ==========================================================================
+   Footer & Modals Dark Mode
+   ========================================================================== */
 [data-theme="dark"] .final-cta-section {
   background: linear-gradient(135deg, #1C0F18 0%, #11131C 100%);
   border-top: 1px solid var(--color-border);
@@ -2555,15 +2788,19 @@ button, input, select, textarea {
 }
 
 [data-theme="dark"] .wa-popup-menu {
-  background: var(--color-card-bg);
+  background: #1A1D2B;
   border: 1px solid var(--color-border);
   box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6);
+}
+
+[data-theme="dark"] .wa-popup-prompt {
+  color: #D1D5E4;
 }
 
 [data-theme="dark"] .wa-branch-btn {
   background: #141724;
   border: 1px solid var(--color-border);
-  color: var(--color-secondary);
+  color: #FFFFFF;
 }
 
 [data-theme="dark"] .wa-branch-btn:hover {
@@ -2573,29 +2810,36 @@ button, input, select, textarea {
 }
 
 [data-theme="dark"] .btn-secondary {
-  background: var(--color-card-bg);
-  border-color: var(--color-border);
-  color: var(--color-secondary);
+  background: rgba(26, 29, 43, 0.95);
+  border-color: var(--color-border-hover);
+  color: #FFFFFF;
 }
 
 [data-theme="dark"] .btn-secondary:hover {
   background: var(--color-border);
   border-color: var(--color-border-hover);
+  color: #FFFFFF;
 }
 
 [data-theme="dark"] .btn-outline-primary {
   border-color: var(--color-primary);
-  color: var(--color-primary);
+  color: #FFA5C8;
+}
+
+[data-theme="dark"] .btn-outline-primary:hover {
+  background: var(--color-primary);
+  color: #FFFFFF;
 }
 
 [data-theme="dark"] .btn-outline-secondary {
   border-color: var(--color-border);
-  color: var(--color-secondary);
+  color: #E2E5F0;
 }
 
 [data-theme="dark"] .btn-outline-secondary:hover {
   border-color: var(--color-border-hover);
   background: rgba(255, 255, 255, 0.05);
+  color: #FFFFFF;
 }
 
 /* ==========================================================================
