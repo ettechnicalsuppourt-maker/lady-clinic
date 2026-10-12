@@ -1,4 +1,4 @@
-﻿/* ==========================================================================
+/* ==========================================================================
    Lady Clinic - Dr. Shahira El Ghalban
    Design System & Premium Feminine Styling
    ========================================================================== */
@@ -2203,3 +2203,457 @@ button, input, select, textarea {
   .wa-btn-label { display: none; }
   .wa-toggle-btn { padding: 12px; }
 }
+
+/* ==========================================================================
+   Dark Theme System
+   ========================================================================== */
+[data-theme="dark"] {
+  --color-primary: #E0528D;
+  --color-primary-hover: #F26F9E;
+  --color-primary-light: rgba(224, 82, 141, 0.16);
+  --color-primary-surface: #1E1724;
+  --color-primary-glow: rgba(224, 82, 141, 0.35);
+
+  --color-secondary: #F3F4F8;
+  --color-secondary-soft: #C8CDDC;
+  --color-secondary-light: #8E95AA;
+
+  --color-accent-gold: #E5C358;
+  --color-accent-gold-soft: rgba(229, 195, 88, 0.15);
+
+  --color-wa: #25D366;
+  --color-wa-hover: #2ee073;
+  --color-wa-glow: rgba(37, 211, 102, 0.35);
+
+  --color-bg-main: #0D0F17;
+  --color-bg-alt: #131622;
+  --color-card-bg: #1A1D2B;
+  --color-border: #282D3E;
+  --color-border-hover: #3E4660;
+
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 10px 25px -5px rgba(0, 0, 0, 0.45), 0 8px 10px -6px rgba(224, 82, 141, 0.08);
+  --shadow-lg: 0 20px 40px -10px rgba(0, 0, 0, 0.6), 0 12px 18px -6px rgba(224, 82, 141, 0.12);
+  --shadow-float: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+}
+
+[data-theme="dark"] .top-bar {
+  background: linear-gradient(90deg, #0A0B10, #141722);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+[data-theme="dark"] .branch-quick-select select option {
+  background: #141722;
+  color: #F3F4F8;
+}
+
+[data-theme="dark"] .site-header {
+  background: rgba(13, 15, 23, 0.92);
+  border-bottom: 1px solid var(--color-border);
+}
+
+[data-theme="dark"] .site-header.scrolled {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+}
+
+[data-theme="dark"] .mobile-drawer {
+  background: rgba(16, 19, 29, 0.98);
+  border-bottom: 1px solid var(--color-border);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+}
+
+[data-theme="dark"] .mobile-menu-btn {
+  background: var(--color-card-bg);
+  border-color: var(--color-border);
+}
+
+[data-theme="dark"] .hamburger-line {
+  background-color: var(--color-secondary);
+}
+
+[data-theme="dark"] .mobile-nav-link {
+  color: var(--color-secondary);
+}
+
+[data-theme="dark"] .hero-backdrop-glow {
+  background: radial-gradient(circle at 70% 30%, rgba(224, 82, 141, 0.16) 0%, rgba(229, 195, 88, 0.06) 40%, transparent 70%);
+}
+
+[data-theme="dark"] .hero-subtle-pattern {
+  opacity: 0.03;
+}
+
+[data-theme="dark"] .floating-badge {
+  background: rgba(26, 29, 43, 0.94);
+  border-color: var(--color-border);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.5);
+  color: var(--color-secondary);
+}
+
+[data-theme="dark"] .badge-title {
+  color: var(--color-secondary);
+}
+
+[data-theme="dark"] .about-card-frame img {
+  border-color: var(--color-card-bg);
+}
+
+[data-theme="dark"] .about-quote-box {
+  background: var(--color-card-bg);
+  border-right-color: var(--color-primary);
+  box-shadow: var(--shadow-md);
+}
+
+[data-theme="dark"] .value-item {
+  background: var(--color-card-bg);
+  border-color: var(--color-border);
+}
+
+[data-theme="dark"] .value-title {
+  color: var(--color-secondary);
+}
+
+[data-theme="dark"] .service-card {
+  background: var(--color-card-bg);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-sm);
+}
+
+[data-theme="dark"] .service-card:hover {
+  border-color: var(--color-border-hover);
+  box-shadow: var(--shadow-md);
+}
+
+[data-theme="dark"] .service-title {
+  color: var(--color-secondary);
+}
+
+[data-theme="dark"] .service-features li {
+  color: var(--color-secondary-soft);
+}
+
+[data-theme="dark"] .service-duration {
+  color: var(--color-secondary-light);
+}
+
+[data-theme="dark"] .doctor-card-wrapper {
+  background: var(--color-card-bg);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-lg);
+}
+
+[data-theme="dark"] .doctor-quote-banner {
+  background: rgba(224, 82, 141, 0.08);
+  color: var(--color-secondary);
+}
+
+[data-theme="dark"] .why-card {
+  background: var(--color-card-bg);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-sm);
+}
+
+[data-theme="dark"] .why-card-title {
+  color: var(--color-secondary);
+}
+
+[data-theme="dark"] .branch-tab-btn {
+  background: var(--color-card-bg);
+  border-color: var(--color-border);
+  color: var(--color-secondary-soft);
+}
+
+[data-theme="dark"] .branch-tab-btn:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+[data-theme="dark"] .branch-tab-btn.active {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: #FFFFFF;
+}
+
+[data-theme="dark"] .branch-details-card {
+  background: var(--color-card-bg);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-md);
+}
+
+[data-theme="dark"] .branch-title {
+  color: var(--color-secondary);
+}
+
+[data-theme="dark"] .meta-value {
+  color: var(--color-secondary);
+}
+
+[data-theme="dark"] .branch-map-placeholder {
+  background: #141722;
+  border-color: var(--color-border);
+}
+
+[data-theme="dark"] .map-visual-frame {
+  background: var(--color-card-bg);
+  border-color: var(--color-border);
+}
+
+[data-theme="dark"] .review-card {
+  background: var(--color-card-bg);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-sm);
+}
+
+[data-theme="dark"] .review-quote {
+  color: var(--color-secondary-soft);
+}
+
+[data-theme="dark"] .author-name {
+  color: var(--color-secondary);
+}
+
+[data-theme="dark"] .community-counter-box {
+  background: var(--color-card-bg);
+  border: 1px solid var(--color-border);
+}
+
+[data-theme="dark"] .booking-card-wrapper {
+  background: #141724;
+  border: 1px solid var(--color-border);
+}
+
+[data-theme="dark"] .booking-heading {
+  color: var(--color-secondary);
+}
+
+[data-theme="dark"] .perk-item {
+  color: var(--color-secondary-soft);
+}
+
+[data-theme="dark"] .booking-direct-box {
+  background: #0E1018;
+  border-color: var(--color-border);
+}
+
+[data-theme="dark"] .booking-form-card {
+  background: var(--color-card-bg);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-lg);
+}
+
+[data-theme="dark"] .form-label {
+  color: var(--color-secondary);
+}
+
+[data-theme="dark"] .form-input,
+[data-theme="dark"] .form-select,
+[data-theme="dark"] .form-textarea {
+  background: #0F111B;
+  border-color: var(--color-border);
+  color: var(--color-secondary);
+}
+
+[data-theme="dark"] .form-input:focus,
+[data-theme="dark"] .form-select:focus,
+[data-theme="dark"] .form-textarea:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 4px var(--color-primary-glow);
+}
+
+[data-theme="dark"] .form-select option {
+  background: #1A1D2B;
+  color: #F3F4F8;
+}
+
+[data-theme="dark"] .faq-item {
+  background: var(--color-card-bg);
+  border: 1px solid var(--color-border);
+}
+
+[data-theme="dark"] .faq-question-btn {
+  color: var(--color-secondary);
+}
+
+[data-theme="dark"] .faq-answer-panel {
+  color: var(--color-secondary-soft);
+  border-top: 1px solid var(--color-border);
+}
+
+[data-theme="dark"] .final-cta-section {
+  background: linear-gradient(135deg, #1C0F18 0%, #11131C 100%);
+  border-top: 1px solid var(--color-border);
+}
+
+[data-theme="dark"] .site-footer {
+  background: #080A0E;
+  border-top: 1px solid var(--color-border);
+}
+
+[data-theme="dark"] .footer-bottom-bar {
+  border-top-color: var(--color-border);
+}
+
+[data-theme="dark"] .wa-popup-menu {
+  background: var(--color-card-bg);
+  border: 1px solid var(--color-border);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6);
+}
+
+[data-theme="dark"] .wa-branch-btn {
+  background: #141724;
+  border: 1px solid var(--color-border);
+  color: var(--color-secondary);
+}
+
+[data-theme="dark"] .wa-branch-btn:hover {
+  background: var(--color-primary-light);
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+[data-theme="dark"] .btn-secondary {
+  background: var(--color-card-bg);
+  border-color: var(--color-border);
+  color: var(--color-secondary);
+}
+
+[data-theme="dark"] .btn-secondary:hover {
+  background: var(--color-border);
+  border-color: var(--color-border-hover);
+}
+
+[data-theme="dark"] .btn-outline-primary {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+[data-theme="dark"] .btn-outline-secondary {
+  border-color: var(--color-border);
+  color: var(--color-secondary);
+}
+
+[data-theme="dark"] .btn-outline-secondary:hover {
+  border-color: var(--color-border-hover);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+/* ==========================================================================
+   Theme & Language Switcher Controls
+   ========================================================================== */
+.theme-lang-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.theme-lang-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  height: 42px;
+  padding: 0 14px;
+  border-radius: var(--radius-pill);
+  background: var(--color-primary-light);
+  border: 1.5px solid var(--color-border-hover);
+  color: var(--color-secondary);
+  font-size: 0.88rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  user-select: none;
+}
+
+.theme-lang-btn:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  background: rgba(194, 62, 117, 0.12);
+  transform: translateY(-1px);
+}
+
+.theme-toggle-btn {
+  width: 42px;
+  padding: 0;
+  font-size: 1.2rem;
+}
+
+.mobile-drawer-settings {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  padding-bottom: 16px;
+  margin-bottom: 16px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.drawer-setting-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 14px;
+  border-radius: var(--radius-md);
+  background: var(--color-primary-light);
+  border: 1.5px solid var(--color-border);
+  color: var(--color-secondary);
+  font-size: 0.92rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.drawer-setting-btn:hover,
+.drawer-setting-btn:active {
+  background: var(--color-primary);
+  color: #FFFFFF;
+  border-color: var(--color-primary);
+}
+
+/* ==========================================================================
+   Directional & LTR (English) System
+   ========================================================================== */
+html[dir="ltr"] body {
+  font-family: var(--font-latin);
+}
+
+html[dir="ltr"] .hero-slogan-strip {
+  border-right: none;
+  border-left: 4px solid var(--color-primary);
+  border-radius: var(--radius-md) 4px 4px var(--radius-md);
+}
+
+html[dir="ltr"] .about-quote-box {
+  margin-right: 0;
+  margin-left: 32px;
+  border-right: none;
+  border-left: 4px solid var(--color-primary);
+}
+
+html[dir="ltr"] .doctor-quote-banner {
+  border-right: none;
+  border-left: 3px solid var(--color-primary);
+  border-radius: var(--radius-md) 4px 4px var(--radius-md);
+}
+
+html[dir="ltr"] .title-ornament-left {
+  margin-right: auto;
+  margin-left: 0;
+}
+
+html[dir="ltr"] .floating-wa-widget {
+  left: auto;
+  right: 24px;
+}
+
+html[dir="ltr"] .wa-popup-menu {
+  left: auto;
+  right: 0;
+}
+
+@media (max-width: 480px) {
+  html[dir="ltr"] .floating-wa-widget {
+    left: auto;
+    right: 18px;
+  }
+}
+

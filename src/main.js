@@ -1,158 +1,34 @@
-﻿/**
+/**
  * Lady Clinic - Dr. Shahira El Ghalban
  * Interactive Landing Page JavaScript
+ * With Bilingual (Arabic / English) and Dark/Light Mode support
  */
 
+import { translations, branchDataByLang } from './translations.js';
+
 document.addEventListener('DOMContentLoaded', () => {
-  // 1. Header Sticky Effect
-  const siteHeader = document.getElementById('siteHeader');
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 40) {
-      siteHeader.classList.add('scrolled');
-    } else {
-      siteHeader.classList.remove('scrolled');
-    }
-  });
+  // ----------------------------------------------------
+  // State Management: Theme & Language
+  // ----------------------------------------------------
+  let currentLang = localStorage.getItem('lady_clinic_lang') || 'ar';
+  let currentTheme = localStorage.getItem('lady_clinic_theme') || (
+    window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+  );
+  let currentBranch = 'tanta';
 
-  // 2. Mobile Drawer Navigation
-  const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-  const mobileDrawer = document.getElementById('mobileDrawer');
-  const mobileLinks = document.querySelectorAll('.mobile-nav-link, .mobile-drawer-btn');
+  // DOM Elements for Switchers
+  const themeToggleBtn = document.getElementById('themeToggleBtn');
+  const themeIcon = document.getElementById('themeIcon');
+  const mobileThemeToggleBtn = document.getElementById('mobileThemeToggleBtn');
+  const mobileThemeIcon = document.getElementById('mobileThemeIcon');
+  const mobileThemeText = document.getElementById('mobileThemeText');
 
-  if (mobileMenuBtn && mobileDrawer) {
-    mobileMenuBtn.addEventListener('click', () => {
-      const isOpen = mobileDrawer.classList.contains('open');
-      mobileDrawer.classList.toggle('open');
-      mobileMenuBtn.setAttribute('aria-expanded', !isOpen);
-    });
+  const langToggleBtn = document.getElementById('langToggleBtn');
+  const langLabel = document.getElementById('langLabel');
+  const mobileLangToggleBtn = document.getElementById('mobileLangToggleBtn');
+  const mobileLangText = document.getElementById('mobileLangText');
 
-    mobileLinks.forEach(link => {
-      link.addEventListener('click', () => {
-        mobileDrawer.classList.remove('open');
-        mobileMenuBtn.setAttribute('aria-expanded', false);
-      });
-    });
-  }
-
-  // 3. Services Filter Tabs
-  const tabBtns = document.querySelectorAll('.tab-btn');
-  const serviceCards = document.querySelectorAll('.service-card');
-
-  tabBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      tabBtns.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-
-      const category = btn.getAttribute('data-category');
-
-      serviceCards.forEach(card => {
-        if (category === 'all' || card.getAttribute('data-category') === category) {
-          card.style.display = 'flex';
-          card.style.opacity = '0';
-          setTimeout(() => {
-            card.style.opacity = '1';
-          }, 50);
-        } else {
-          card.style.display = 'none';
-        }
-      });
-    });
-  });
-
-  // 4. Service Card "Book Now" Auto-Select
-  const serviceBookBtns = document.querySelectorAll('.btn-service-book');
-  const bookingServiceSelect = document.getElementById('bookingService');
-
-  serviceBookBtns.forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      e.preventDefault();
-      const serviceName = btn.getAttribute('data-service');
-      if (bookingServiceSelect && serviceName) {
-        // Find matching option
-        for (let i = 0; i < bookingServiceSelect.options.length; i++) {
-          if (bookingServiceSelect.options[i].value === serviceName) {
-            bookingServiceSelect.selectedIndex = i;
-            break;
-          }
-        }
-      }
-      const bookingSection = document.getElementById('booking');
-      if (bookingSection) {
-        bookingSection.scrollIntoView({ behavior: 'smooth' });
-      }
-    });
-  });
-
-  // 5. Interactive Branch Locator Data & Switcher
-  const branchData = {
-    tanta: {
-      title: 'فرع طنطا (الفرع الجديد ✨)',
-      desc: 'أحدث فروع Lady Clinic لخدمة مريضاتنا في الغربية والدلتا بأحدث أجهزة التجميل والليزر ونفس المستوى الرفيع من الخصوصية والراحة.',
-      address: 'طنطا، شارع الجيش / منطقة النحاس، الغربية',
-      hours: 'يومياً من السبت إلى الخميس (من 12:00 ظهراً وحتى 9:00 مساءً)',
-      phones: '01030302398 / 01026601000',
-      status: 'متاح للحجز الآن',
-      mapTag: 'Lady Clinic - طنطا',
-      mapQuery: 'Lady+Clinic+Tanta',
-      waMessage: 'مرحبا، أود حجز موعد في فرع طنطا عيادة Lady Clinic'
-    },
-    mohandessin: {
-      title: 'فرع المهندسين (القاهرة الكبرى)',
-      desc: 'فرعنا الرئيسي في قلب الجيزة، مجهز بأحدث عيادات الجلدية وغرف الليزر المستقلة بأعلى درجات الخصوصية.',
-      address: 'شارع جامعة الدول العربية، المهندسين، الجيزة',
-      hours: 'يومياً من السبت إلى الخميس (من 12:00 ظهراً وحتى 9:00 مساءً)',
-      phones: '01030302398 / 01145320668',
-      status: 'متاح للحجز الآن',
-      mapTag: 'Lady Clinic - المهندسين',
-      mapQuery: 'Lady+Clinic+Mohandessin',
-      waMessage: 'مرحبا، أود حجز موعد في فرع المهندسين عيادة Lady Clinic'
-    },
-    nasrcity: {
-      title: 'فرع مدينة نصر (شرق القاهرة)',
-      desc: 'خدمة متكاملة لسيدات وفتيات شرق القاهرة والتجمع، مع نخبة من طبيبات الجلدية والتجميل المتخصصات.',
-      address: 'شارع عباس العقاد، مدينة نصر، القاهرة',
-      hours: 'يومياً من السبت إلى الخميس (من 12:00 ظهراً وحتى 9:00 مساءً)',
-      phones: '01030302398 / 01145320668',
-      status: 'متاح للحجز الآن',
-      mapTag: 'Lady Clinic - مدينة نصر',
-      mapQuery: 'Lady+Clinic+Nasr+City',
-      waMessage: 'مرحبا، أود حجز موعد في فرع مدينة نصر عيادة Lady Clinic'
-    },
-    october: {
-      title: 'فرع 6 أكتوبر (غرب الجيزة)',
-      desc: 'موقع مميز وراحة استثنائية لخدمة سكان أكتوبر والشيخ زايد وغرب القاهرة بكامل التجهيزات والتعقيم.',
-      address: 'المحور المركزي، بالقرب من ميدان الحصري، 6 أكتوبر',
-      hours: 'يومياً من السبت إلى الخميس (من 12:00 ظهراً وحتى 9:00 مساءً)',
-      phones: '01030302398 / 01286607231',
-      status: 'متاح للحجز الآن',
-      mapTag: 'Lady Clinic - 6 أكتوبر',
-      mapQuery: 'Lady+Clinic+6th+October',
-      waMessage: 'مرحبا، أود حجز موعد في فرع 6 أكتوبر عيادة Lady Clinic'
-    },
-    shebin: {
-      title: 'فرع شبين الكوم (المنوفية)',
-      desc: 'الفرع العريق لـ Lady Clinic في المنوفية، والذي شهد انطلاقة قصة النجاح وثقة عشرات الآلاف من المريضات.',
-      address: 'ميدان شرف، عمارة الحكمة، بجوار مركز النخبة، الدور الأول',
-      hours: 'يومياً من السبت إلى الخميس (من 12:00 ظهراً وحتى 9:00 مساءً)',
-      phones: '01030302398 / 01286607231',
-      status: 'متاح للحجز الآن',
-      mapTag: 'Lady Clinic - شبين الكوم',
-      mapQuery: 'Lady+Clinic+Shebin+El+Kom',
-      waMessage: 'مرحبا، أود حجز موعد في فرع شبين الكوم عيادة Lady Clinic'
-    },
-    menouf: {
-      title: 'فرع منوف (المنوفية)',
-      desc: 'فرع متكامل لخدمة أهالي منوف والمناطق المجاورة بأعلى معايير الرعاية والخصوصية النسائية.',
-      address: 'شارع الجيش، برج داون تاون، فوق ويل مارت، الدور السادس',
-      hours: 'يومياً من السبت إلى الخميس (من 12:00 ظهراً وحتى 9:00 مساءً)',
-      phones: '01030302398 / 01286607231',
-      status: 'متاح للحجز الآن',
-      mapTag: 'Lady Clinic - منوف',
-      mapQuery: 'Lady+Clinic+Menouf',
-      waMessage: 'مرحبا، أود حجز موعد في فرع منوف عيادة Lady Clinic'
-    }
-  };
-
+  // Branch UI Elements
   const branchTabBtns = document.querySelectorAll('.branch-tab-btn');
   const branchTitle = document.getElementById('branchTitle');
   const branchDesc = document.getElementById('branchDesc');
@@ -165,9 +41,159 @@ document.addEventListener('DOMContentLoaded', () => {
   const mapBranchTag = document.getElementById('mapBranchTag');
   const branchMapLink = document.getElementById('branchMapLink');
   const topBarBranchSelect = document.getElementById('topBarBranchSelect');
+  const bookingBranchSelect = document.getElementById('bookingBranch');
+  const bookingServiceDropdown = document.getElementById('bookingService');
 
+  // ----------------------------------------------------
+  // Theme Toggle Functions
+  // ----------------------------------------------------
+  function applyTheme(theme) {
+    currentTheme = theme;
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('lady_clinic_theme', theme);
+
+    const isDark = theme === 'dark';
+    const iconStr = isDark ? '☀️' : '🌙';
+    const textStr = isDark
+      ? (currentLang === 'ar' ? 'الوضع النهاري' : 'Light Mode')
+      : (currentLang === 'ar' ? 'الوضع الليلي' : 'Dark Mode');
+
+    if (themeIcon) themeIcon.textContent = iconStr;
+    if (themeToggleBtn) {
+      themeToggleBtn.setAttribute('title', textStr);
+      themeToggleBtn.setAttribute('aria-label', textStr);
+    }
+    if (mobileThemeIcon) mobileThemeIcon.textContent = iconStr;
+    if (mobileThemeText) mobileThemeText.textContent = textStr;
+  }
+
+  function toggleTheme() {
+    applyTheme(currentTheme === 'dark' ? 'light' : 'dark');
+  }
+
+  if (themeToggleBtn) themeToggleBtn.addEventListener('click', toggleTheme);
+  if (mobileThemeToggleBtn) mobileThemeToggleBtn.addEventListener('click', toggleTheme);
+
+  // ----------------------------------------------------
+  // Language Functions
+  // ----------------------------------------------------
+  function applyLanguage(lang) {
+    currentLang = lang;
+    const t = translations[lang] || translations.ar;
+    localStorage.setItem('lady_clinic_lang', lang);
+
+    document.documentElement.setAttribute('lang', lang);
+    document.documentElement.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+    document.title = t.metaTitle;
+
+    const metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) metaDesc.setAttribute('content', t.metaDesc);
+
+    // Update text elements with data-i18n
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      if (t[key] !== undefined) {
+        el.textContent = t[key];
+      }
+    });
+
+    // Update HTML elements with data-i18n-html
+    document.querySelectorAll('[data-i18n-html]').forEach(el => {
+      const key = el.getAttribute('data-i18n-html');
+      if (t[key] !== undefined) {
+        el.innerHTML = t[key];
+      }
+    });
+
+    // Update placeholder attributes with data-i18n-placeholder
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+      const key = el.getAttribute('data-i18n-placeholder');
+      if (t[key] !== undefined) {
+        el.setAttribute('placeholder', t[key]);
+      }
+    });
+
+    // Update ARIA labels with data-i18n-aria
+    document.querySelectorAll('[data-i18n-aria]').forEach(el => {
+      const key = el.getAttribute('data-i18n-aria');
+      if (t[key] !== undefined) {
+        el.setAttribute('aria-label', t[key]);
+      }
+    });
+
+    // Update directional arrows
+    document.querySelectorAll('.btn-arrow').forEach(el => {
+      el.textContent = lang === 'ar' ? '←' : '→';
+    });
+
+    // Update top bar branch options
+    if (topBarBranchSelect && t.topBranches) {
+      Array.from(topBarBranchSelect.options).forEach(opt => {
+        if (t.topBranches[opt.value]) {
+          opt.textContent = t.topBranches[opt.value];
+        }
+      });
+    }
+
+    // Update booking form branch select options
+    if (bookingBranchSelect && t.branchOptions) {
+      const selectedIndex = bookingBranchSelect.selectedIndex;
+      const firstOpt = bookingBranchSelect.options[0];
+      if (firstOpt) firstOpt.textContent = t.formSelectBranchPlaceholder;
+      
+      t.branchOptions.forEach((item, index) => {
+        const opt = bookingBranchSelect.options[index + 1];
+        if (opt) {
+          opt.textContent = item.label;
+        }
+      });
+      bookingBranchSelect.selectedIndex = selectedIndex;
+    }
+
+    // Update booking form service select options
+    if (bookingServiceDropdown && t.serviceOptions) {
+      const selectedIndex = bookingServiceDropdown.selectedIndex;
+      const firstOpt = bookingServiceDropdown.options[0];
+      if (firstOpt) firstOpt.textContent = t.formSelectServicePlaceholder;
+
+      t.serviceOptions.forEach((item, index) => {
+        const opt = bookingServiceDropdown.options[index + 1];
+        if (opt) {
+          opt.textContent = item.label;
+        }
+      });
+      bookingServiceDropdown.selectedIndex = selectedIndex;
+    }
+
+    // Update toggle buttons labels
+    if (langLabel) {
+      langLabel.textContent = lang === 'ar' ? 'English' : 'العربية';
+    }
+    if (mobileLangText) {
+      mobileLangText.textContent = lang === 'ar' ? 'English' : 'العربية';
+    }
+
+    // Update theme toggle label in new language
+    applyTheme(currentTheme);
+
+    // Re-render active branch in current language
+    updateBranchUI(currentBranch);
+  }
+
+  function toggleLanguage() {
+    applyLanguage(currentLang === 'ar' ? 'en' : 'ar');
+  }
+
+  if (langToggleBtn) langToggleBtn.addEventListener('click', toggleLanguage);
+  if (mobileLangToggleBtn) mobileLangToggleBtn.addEventListener('click', toggleLanguage);
+
+  // ----------------------------------------------------
+  // Branch Locator UI
+  // ----------------------------------------------------
   function updateBranchUI(branchKey) {
-    const data = branchData[branchKey];
+    currentBranch = branchKey;
+    const branches = branchDataByLang[currentLang] || branchDataByLang.ar;
+    const data = branches[branchKey];
     if (!data) return;
 
     if (branchTitle) branchTitle.textContent = data.title;
@@ -220,7 +246,92 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 6. FAQ Accordion
+  // ----------------------------------------------------
+  // Header Sticky Effect
+  // ----------------------------------------------------
+  const siteHeader = document.getElementById('siteHeader');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 40) {
+      siteHeader.classList.add('scrolled');
+    } else {
+      siteHeader.classList.remove('scrolled');
+    }
+  });
+
+  // ----------------------------------------------------
+  // Mobile Drawer Navigation
+  // ----------------------------------------------------
+  const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+  const mobileDrawer = document.getElementById('mobileDrawer');
+  const mobileLinks = document.querySelectorAll('.mobile-nav-link, .mobile-drawer-btn');
+
+  if (mobileMenuBtn && mobileDrawer) {
+    mobileMenuBtn.addEventListener('click', () => {
+      const isOpen = mobileDrawer.classList.contains('open');
+      mobileDrawer.classList.toggle('open');
+      mobileMenuBtn.setAttribute('aria-expanded', !isOpen);
+    });
+
+    mobileLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        mobileDrawer.classList.remove('open');
+        mobileMenuBtn.setAttribute('aria-expanded', false);
+      });
+    });
+  }
+
+  // ----------------------------------------------------
+  // Services Filter Tabs
+  // ----------------------------------------------------
+  const tabBtns = document.querySelectorAll('.tab-btn');
+  const serviceCards = document.querySelectorAll('.service-card');
+
+  tabBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      tabBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const category = btn.getAttribute('data-category');
+
+      serviceCards.forEach(card => {
+        if (category === 'all' || card.getAttribute('data-category') === category) {
+          card.style.display = 'flex';
+          card.style.opacity = '0';
+          setTimeout(() => {
+            card.style.opacity = '1';
+          }, 50);
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    });
+  });
+
+  // ----------------------------------------------------
+  // Service Card "Book Now" Auto-Select
+  // ----------------------------------------------------
+  const serviceBookBtns = document.querySelectorAll('.btn-service-book');
+
+  serviceBookBtns.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const serviceIndex = btn.getAttribute('data-service-index');
+      if (bookingServiceDropdown && serviceIndex !== null) {
+        const targetIndex = parseInt(serviceIndex, 10);
+        if (targetIndex >= 0 && targetIndex < bookingServiceDropdown.options.length) {
+          bookingServiceDropdown.selectedIndex = targetIndex;
+        }
+      }
+      const bookingSection = document.getElementById('booking');
+      if (bookingSection) {
+        bookingSection.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  });
+
+  // ----------------------------------------------------
+  // FAQ Accordion
+  // ----------------------------------------------------
   const faqItems = document.querySelectorAll('.faq-item');
   faqItems.forEach(item => {
     const btn = item.querySelector('.faq-question-btn');
@@ -237,12 +348,12 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // 7. Booking Form Validation & Actions
+  // ----------------------------------------------------
+  // Booking Form Validation & Actions
+  // ----------------------------------------------------
   const appointmentForm = document.getElementById('appointmentForm');
   const patientNameInput = document.getElementById('patientName');
   const patientPhoneInput = document.getElementById('patientPhone');
-  const bookingBranchSelect = document.getElementById('bookingBranch');
-  const bookingServiceDropdown = document.getElementById('bookingService');
   const bookingTimeInput = document.getElementById('bookingTime');
   const bookingNotesInput = document.getElementById('bookingNotes');
   const submitWhatsAppBtn = document.getElementById('submitWhatsAppBtn');
@@ -284,19 +395,31 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const name = patientNameInput.value.trim();
       const phone = patientPhoneInput.value.trim();
-      const branch = bookingBranchSelect.value || 'أقرب فرع متاح';
-      const service = bookingServiceDropdown.value || 'استشارة جلدية وتجميلية';
-      const time = bookingTimeInput.value.trim() || 'في أقرب موعد متاح';
-      const notes = bookingNotesInput.value.trim() || 'لا توجد ملاحظات إضافية';
+      const branchText = bookingBranchSelect.options[bookingBranchSelect.selectedIndex]?.text || (currentLang === 'ar' ? 'أقرب فرع متاح' : 'Nearest branch');
+      const serviceText = bookingServiceDropdown.options[bookingServiceDropdown.selectedIndex]?.text || (currentLang === 'ar' ? 'استشارة جلدية وتجميلية' : 'General consultation');
+      const time = bookingTimeInput.value.trim() || (currentLang === 'ar' ? 'في أقرب موعد متاح' : 'Earliest available');
+      const notes = bookingNotesInput.value.trim() || (currentLang === 'ar' ? 'لا توجد ملاحظات إضافية' : 'None');
 
-      const message = `السلام عليكم ورحمة الله،
+      let message = '';
+      if (currentLang === 'ar') {
+        message = `السلام عليكم ورحمة الله،
 أود حجز موعد في Lady Clinic:
 - الاسم: ${name}
 - رقم الهاتف: ${phone}
-- الفرع المفضل: ${branch}
-- الخدمة المطلوبة: ${service}
+- الفرع المفضل: ${branchText}
+- الخدمة المطلوبة: ${serviceText}
 - الوقت المفضل: ${time}
 - ملاحظات: ${notes}`;
+      } else {
+        message = `Hello,
+I would like to book an appointment at Lady Clinic:
+- Name: ${name}
+- Phone: ${phone}
+- Preferred Branch: ${branchText}
+- Requested Service: ${serviceText}
+- Preferred Time: ${time}
+- Notes: ${notes}`;
+      }
 
       const waUrl = `https://wa.me/201030302398?text=${encodeURIComponent(message)}`;
       window.open(waUrl, '_blank');
@@ -307,7 +430,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Standard Submit Form
+  // Direct Submit Form
   if (appointmentForm) {
     appointmentForm.addEventListener('submit', (e) => {
       e.preventDefault();
@@ -325,7 +448,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 8. Floating WhatsApp Widget Popup Toggle
+  // ----------------------------------------------------
+  // Floating WhatsApp Widget Popup Toggle
+  // ----------------------------------------------------
   const waToggleBtn = document.getElementById('waToggleBtn');
   const waPopupMenu = document.getElementById('waPopupMenu');
   const waPopupClose = document.getElementById('waPopupClose');
@@ -349,4 +474,10 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }
+
+  // ----------------------------------------------------
+  // Initialize Theme and Language
+  // ----------------------------------------------------
+  applyTheme(currentTheme);
+  applyLanguage(currentLang);
 });
